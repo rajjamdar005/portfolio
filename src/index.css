@@ -1,0 +1,354 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+MINECRAFT THEME: Pixel art inspired with blocky, retro gaming aesthetics
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+@layer base {
+  :root {
+    /* Minecraft-inspired color palette - earth tones instead of blue */
+    --background: 60 15% 88%; /* Light sandy/dirt tone */
+    --foreground: 120 25% 20%; /* Dark forest green */
+
+    --card: 135 25% 92%; /* Light stone gray */
+    --card-foreground: 120 15% 15%;
+
+    --popover: 135 25% 92%;
+    --popover-foreground: 120 15% 15%;
+
+    --primary: 120 40% 35%; /* Grass green */
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 40 25% 70%; /* Sand/dirt brown */
+    --secondary-foreground: 120 15% 15%;
+
+    --muted: 135 15% 88%; /* Light stone */
+    --muted-foreground: 120 10% 40%;
+
+    --accent: 45 85% 55%; /* Golden/yellow */
+    --accent-foreground: 120 15% 15%;
+
+    --destructive: 0 85% 55%; /* Redstone red */
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 135 20% 75%; /* Stone border */
+    --input: 135 25% 92%;
+    --ring: 45 85% 55%; /* Golden ring */
+
+    /* Minecraft-specific colors */
+    --minecraft-grass: 120 40% 35%;
+    --minecraft-dirt: 35 45% 40%;
+    --minecraft-stone: 0 0% 60%;
+    --minecraft-gold: 45 85% 55%;
+    --minecraft-diamond: 200 85% 65%;
+    --minecraft-redstone: 0 85% 55%;
+    --minecraft-emerald: 140 70% 45%;
+    --minecraft-iron: 0 0% 70%;
+
+    /* Gradients - neutral earth tones */
+    --gradient-sky: linear-gradient(180deg, hsl(45 20% 90%), hsl(50 15% 85%));
+    --gradient-grass: linear-gradient(180deg, hsl(120 50% 40%), hsl(120 40% 35%));
+    --gradient-gold: linear-gradient(135deg, hsl(45 85% 65%), hsl(45 85% 45%));
+
+    /* Shadows and effects */
+    --shadow-pixel: 0 4px 0 0 hsl(120 15% 25%);
+    --shadow-glow: 0 0 20px hsl(45 85% 55% / 0.3);
+    --shadow-block: inset 2px 2px 0 0 hsl(0 0% 100% / 0.3), inset -2px -2px 0 0 hsl(0 0% 0% / 0.3);
+
+    --radius: 0; /* Sharp corners for pixel aesthetic */
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Night mode - darker Minecraft palette */
+    --background: 240 15% 12%; /* Dark night sky */
+    --foreground: 45 85% 85%; /* Light golden text */
+
+    --card: 240 15% 18%; /* Dark stone */
+    --card-foreground: 45 85% 85%;
+
+    --popover: 240 15% 18%;
+    --popover-foreground: 45 85% 85%;
+
+    --primary: 120 50% 45%; /* Bright grass green */
+    --primary-foreground: 240 15% 12%;
+
+    --secondary: 35 35% 25%; /* Dark dirt */
+    --secondary-foreground: 45 85% 85%;
+
+    --muted: 240 10% 25%; /* Dark stone */
+    --muted-foreground: 45 40% 65%;
+
+    --accent: 45 85% 65%; /* Bright gold */
+    --accent-foreground: 240 15% 12%;
+
+    --destructive: 0 85% 60%; /* Bright redstone */
+    --destructive-foreground: 240 15% 12%;
+
+    --border: 240 10% 30%; /* Dark border */
+    --input: 240 15% 18%;
+    --ring: 45 85% 65%; /* Golden ring */
+
+    /* Night gradients */
+    --gradient-sky: linear-gradient(180deg, hsl(240 20% 15%), hsl(240 15% 12%));
+    --gradient-grass: linear-gradient(180deg, hsl(120 50% 50%), hsl(120 50% 45%));
+    --gradient-gold: linear-gradient(135deg, hsl(45 85% 75%), hsl(45 85% 55%));
+
+    /* Night shadows */
+    --shadow-pixel: 0 4px 0 0 hsl(240 20% 8%);
+    --shadow-glow: 0 0 25px hsl(45 85% 65% / 0.4);
+    --shadow-block: inset 2px 2px 0 0 hsl(45 85% 65% / 0.2), inset -2px -2px 0 0 hsl(240 20% 8% / 0.5);
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-pixel;
+    image-rendering: pixelated; /* Crisp pixel art */
+  }
+}
+
+@layer components {
+  /* Pixel button styling */
+  .btn-pixel {
+    @apply font-pixel text-xs px-4 py-2 border-2 border-border bg-card text-card-foreground;
+    @apply hover:bg-accent hover:text-accent-foreground transition-all duration-200;
+    box-shadow: var(--shadow-pixel);
+    image-rendering: pixelated;
+  }
+
+  .btn-pixel:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-pixel), var(--shadow-glow);
+  }
+
+  .btn-pixel:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 0 0 hsl(120 15% 25%);
+  }
+
+  /* Inventory slot styling */
+  .inventory-slot {
+    @apply w-16 h-16 bg-card border-2 border-border flex items-center justify-center;
+    @apply hover:bg-accent hover:border-accent-foreground transition-all duration-200;
+    box-shadow: var(--shadow-block);
+    image-rendering: pixelated;
+  }
+
+  .inventory-slot:hover {
+    box-shadow: var(--shadow-block), var(--shadow-glow);
+  }
+
+  /* Enhanced Block styling for authentic Minecraft look */
+  .minecraft-block {
+    @apply bg-card border-4 border-border relative;
+    box-shadow: 
+      inset 4px 4px 0 0 hsl(0 0% 100% / 0.4),
+      inset -4px -4px 0 0 hsl(0 0% 0% / 0.4),
+      var(--shadow-pixel);
+    image-rendering: pixelated;
+    position: relative;
+  }
+
+  .minecraft-block::before {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      hsl(0 0% 100% / 0.1) 2px,
+      hsl(0 0% 100% / 0.1) 4px
+    );
+    pointer-events: none;
+  }
+
+  .minecraft-block:hover {
+    animation: minecraft-glow-pulse 2s ease-in-out infinite;
+  }
+
+  /* Gradient backgrounds */
+  .bg-sky {
+    background: var(--gradient-sky);
+  }
+
+  .bg-grass {
+    background: var(--gradient-grass);
+  }
+
+  .bg-gold {
+    background: var(--gradient-gold);
+  }
+
+  /* Pixel perfect text */
+  .text-pixel {
+    @apply font-pixel;
+    image-rendering: pixelated;
+    text-rendering: optimizeSpeed;
+  }
+
+  /* Hover glow effect */
+  .hover-glow {
+    transition: all 0.3s ease;
+  }
+
+  .hover-glow:hover {
+    filter: drop-shadow(0 0 10px hsl(45 85% 55% / 0.5));
+  }
+
+  /* Enhanced Minecraft animations */
+  @keyframes minecraft-float {
+    0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+    33% { transform: translateY(-15px) rotate(120deg) scale(1.1); }
+    66% { transform: translateY(-25px) rotate(240deg) scale(0.9); }
+  }
+
+  @keyframes minecraft-sparkle {
+    0%, 100% { 
+      opacity: 0.2; 
+      transform: scale(1) translateY(0px) rotate(0deg); 
+    }
+    25% { 
+      opacity: 0.6; 
+      transform: scale(1.3) translateY(-8px) rotate(90deg); 
+    }
+    50% { 
+      opacity: 1; 
+      transform: scale(1.8) translateY(-15px) rotate(180deg); 
+    }
+    75% { 
+      opacity: 0.7; 
+      transform: scale(1.2) translateY(-5px) rotate(270deg); 
+    }
+  }
+
+  @keyframes minecraft-drift {
+    0% { transform: translateX(-100px) translateY(0px); }
+    50% { transform: translateX(50px) translateY(-10px); }
+    100% { transform: translateX(calc(100vw + 100px)) translateY(0px); }
+  }
+
+  @keyframes minecraft-glow-pulse {
+    0%, 100% { 
+      box-shadow: var(--shadow-block); 
+      filter: brightness(1);
+    }
+    50% { 
+      box-shadow: var(--shadow-block), var(--shadow-glow); 
+      filter: brightness(1.2);
+    }
+  }
+
+  @keyframes minecraft-bounce {
+    0%, 100% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-10px) scale(1.05); }
+  }
+
+  @keyframes minecraft-shake {
+    0%, 100% { transform: translateX(0px); }
+    25% { transform: translateX(-2px); }
+    75% { transform: translateX(2px); }
+  }
+
+  /* Page entry animations */
+  @keyframes fade-in-up {
+    0% { 
+      opacity: 0; 
+      transform: translateY(30px); 
+    }
+    100% { 
+      opacity: 1; 
+      transform: translateY(0px); 
+    }
+  }
+
+  @keyframes slide-in-left {
+    0% { 
+      opacity: 0; 
+      transform: translateX(-50px); 
+    }
+    100% { 
+      opacity: 1; 
+      transform: translateX(0px); 
+    }
+  }
+
+  @keyframes slide-in-right {
+    0% { 
+      opacity: 0; 
+      transform: translateX(50px); 
+    }
+    100% { 
+      opacity: 1; 
+      transform: translateX(0px); 
+    }
+  }
+
+  /* Animation classes */
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out;
+  }
+
+  .animate-slide-in-left {
+    animation: slide-in-left 0.7s ease-out;
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 0.7s ease-out;
+  }
+
+  .animate-minecraft-bounce {
+    animation: minecraft-bounce 2s ease-in-out infinite;
+  }
+
+  .animate-minecraft-shake {
+    animation: minecraft-shake 0.5s ease-in-out;
+  }
+
+  .animate-minecraft-float {
+    animation: minecraft-float 4s ease-in-out infinite;
+  }
+
+  /* Gentle float without rotation for avatar */
+  @keyframes minecraft-gentle-float {
+    0%, 100% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-10px) scale(1.02); }
+  }
+
+  .animate-minecraft-gentle-float {
+    animation: minecraft-gentle-float 3s ease-in-out infinite;
+  }
+}
