@@ -39,7 +39,7 @@ const Contact = () => {
       icon: Mail,
       label: "Email",
       value: "siddhirajjamdar@email.com",
-      href: "mailto:siddhirajjamdar@email.com"
+      href: "mailto:siddhirajjamdar@gmail.com"
     },
     {
       icon: Github,
@@ -51,7 +51,7 @@ const Contact = () => {
       icon: Linkedin,
       label: "LinkedIn",
       value: "linkedin.com/in/siddhirajjamdar",
-      href: "https://linkedin.com/in/siddhirajjamdar"
+      href: "https://www.linkedin.com/in/siddhiraj-jamdar-a5b4b2281?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
     },
     {
       icon: MapPin,
